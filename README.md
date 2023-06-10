@@ -11,7 +11,10 @@ Plug-in address: https://ankiweb.net/shared/info/567651868
 
 
 
-## Change Log & Planned issues
+## Change Log & Requested features
+
+- [ ] Add color options in the toolbar. See **Anki website**
+- [ ] Use keyboard to control the pen. See https://github.com/LeoWang2007/write-on-screen-anki/issues/5
 
 - [ ] The pen looses calibration fast on version 2.1.61. See https://github.com/LeoWang2007/write-on-screen-anki/issues/4
 - [ ] Move source code to this repository. See https://github.com/LeoWang2007/write-on-screen-anki/issues/3
@@ -34,7 +37,10 @@ Plug-in address: https://ankiweb.net/shared/info/567651868
 
 
 
-## 更新日志&计划改进
+## 更新日志&已收集的建议
+
+- [ ] 增加颜色选择工具栏
+- [ ] 使用实体键盘控制绘画设置。详见 https://github.com/LeoWang2007/write-on-screen-anki/issues/5
 
 - [ ] 笔尖远离鼠标（2.1.61版本）。详见 https://github.com/LeoWang2007/write-on-screen-anki/issues/4
 - [ ] 移动源代码至GitHub仓库。详见 https://github.com/LeoWang2007/write-on-screen-anki/issues/3
