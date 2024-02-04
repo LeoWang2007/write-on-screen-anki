@@ -1,4 +1,16 @@
+# Sorry...
+
+Due to becoming a member of the school training team, there were too many daily tasks that needed to be done, and I had to postpone the development of this project, which resulted in betraying the trust of too many users.
+
+Recently, I discovered this project: https://github.com/Rytisgit/Anki-StylusDraw, seems to be doing better than me.
+
+I will continue to learn and hope to bring better work to everyone. 
+If there is time in the future, perhaps I will continue to develop it...
+
+
+
 # Write On Screen - Anki plugin
+
 **A hand write plugin for Anki** base on https://ankiweb.net/shared/info/1631622775
 
 
@@ -29,6 +41,18 @@ Plug-in address: https://ankiweb.net/shared/info/567651868
 
 
 <p style="color:gray ">因GitHub是国际平台，故将受众更广的英文版本文档前置。</p>
+
+# 说声抱歉……
+
+由于在学校被选入了训练队，日常需要做的事太多了，我不得不将这个项目的开发工作向后延期，以至于辜负了太多用户的信任。
+
+最近我发现了这个项目：https://github.com/Rytisgit/Anki-StylusDraw，似乎做的比我更好。
+
+我将继续学习，希望能为大家带来更好的作品。
+
+后续有空也许会继续开发吧……
+
+
 
 基于https://ankiweb.net/shared/info/1631622775的Anki卡牌手写插件
 
