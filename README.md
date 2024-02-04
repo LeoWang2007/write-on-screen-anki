@@ -7,7 +7,19 @@ Recently, I discovered this project: https://github.com/Rytisgit/Anki-StylusDraw
 I will continue to learn and hope to bring better work to everyone. 
 If there is time in the future, perhaps I will continue to develop it...
 
+> *Traveler, as you set off on your journey once again, you must remember that the journey itself has meaning.* 
 
+# 说声抱歉……
+
+由于在学校被选入了训练队，日常需要做的事太多了，我不得不将这个项目的开发工作向后延期，以至于辜负了太多用户的信任。
+
+最近我发现了这个项目： https://github.com/Rytisgit/Anki-StylusDraw ，似乎做的比我更好。
+
+我将继续学习，希望能为大家带来更好的作品。
+
+后续有空也许会继续开发吧……
+
+> *旅行者，当你重新踏上旅途之后，一定要记得旅途本身的意义。* 
 
 # Write On Screen - Anki plugin
 
@@ -42,19 +54,7 @@ Plug-in address: https://ankiweb.net/shared/info/567651868
 
 <p style="color:gray ">因GitHub是国际平台，故将受众更广的英文版本文档前置。</p>
 
-# 说声抱歉……
-
-由于在学校被选入了训练队，日常需要做的事太多了，我不得不将这个项目的开发工作向后延期，以至于辜负了太多用户的信任。
-
-最近我发现了这个项目：https://github.com/Rytisgit/Anki-StylusDraw，似乎做的比我更好。
-
-我将继续学习，希望能为大家带来更好的作品。
-
-后续有空也许会继续开发吧……
-
-
-
-基于https://ankiweb.net/shared/info/1631622775的Anki卡牌手写插件
+基于 https://ankiweb.net/shared/info/1631622775 的Anki卡牌手写插件
 
 
 > 我是一名学生，很抱歉我不能及时的回复GitHub中的问题。我会在假期中修复插件的问题。
