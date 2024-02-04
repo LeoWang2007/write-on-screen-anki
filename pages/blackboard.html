@@ -1,0 +1,199 @@
+<div id="canvas_wrapper">
+    <canvas id="main_canvas" width="100" height="100"></canvas>
+</div>
+<div id="pencil_button_bar">
+    <input type="button" class="active" onclick="active=!active;switch_visibility();switch_class(this, 'active');"
+           value="\u270D" title="Toggle visiblity">
+    <input type="button" onclick="ts_undo();" value="\u21B6" title="Undo the last stroke" id="ts_undo_button">
+    <input type="button" class="active" onclick="clear_canvas();" value="\u2715" title="Clean whiteboard">
+</div>
+<style>
+    #canvas_wrapper, #main_canvas {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        /*    z-index: 999;*/
+    }
+
+    .night_mode #pencil_button_bar input[type=button].active {
+        color: #fff !important;
+    }
+
+    #pencil_button_bar input[type=button].active {
+        color: black !important;
+    }
+
+    #pencil_button_bar {
+        position: fixed;
+        bottom: 1px;
+        right: 1px;
+        z-index: 1000;
+        font-family: "Arial Unicode MS", unifont, "Everson Mono", tahoma, arial;
+    }
+
+    #pencil_button_bar input[type=button] {
+        border: 1px solid black;
+        margin: 0 1px;
+        display: inline-block;
+        float: left;
+        width: 90px !important;
+        font-size: 130%;
+        line-height: 130%;
+        height: 50px;
+        border-radius: 8px;
+        background-color: rgba(250, 250, 250, 0.5) !important;
+        color: black;
+        color: #ccc !important;
+    }
+
+    .night_mode #pencil_button_bar input[type=button] {
+        background-color: rgba(10, 10, 10, 0.5) !important;
+        border-color: #ccc;
+        color: #444 !important;
+        text-shadow: 0 0 1px rgba(5, 5, 5, 0.9);
+    }
+
+    #canvas_wrapper {
+        height: 100px
+    }
+</style>
+
+<script>
+    var visible = true;
+    var canvas = document.getElementById('main_canvas');
+    var wrapper = document.getElementById('canvas_wrapper');
+    var ts_undo_button = document.getElementById('ts_undo_button');
+    var ctx = canvas.getContext('2d');
+    var arrays_of_points = [];
+    var color = '#fff';
+    var line_width = 4;
+
+    canvas.onselectstart = function () {
+        return false;
+    };
+    wrapper.onselectstart = function () {
+        return false;
+    };
+
+    function switch_visibility() {
+        if (visible) {
+            canvas.style.display = 'none';
+            wrapper.style.pointerEvents = 'none';
+        } else {
+            canvas.style.display = 'block';
+            wrapper.style.pointerEvents = 'auto';
+        }
+        visible = !visible;
+    }
+
+
+    function midPointBtw(p1, p2) {
+        return {
+            x: p1.x + (p2.x - p1.x) / 2,
+            y: p1.y + (p2.y - p1.y) / 2
+        };
+    }
+
+    function clear_canvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        arrays_of_points = [];
+    }
+
+    function switch_class(e, c) {
+        var reg = new RegExp('(\\\s|^)' + c + '(\\s|$)');
+        if (e.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'))) {
+            e.className = e.className.replace(reg, '');
+        } else {
+            e.className += c;
+        }
+    }
+
+    function resize() {
+        var card = document.getElementsByClassName('card')[0]
+        ctx.canvas.width = document.documentElement.scrollWidth - 1;
+        ctx.canvas.height = Math.max(
+            document.body.clientHeight,
+            window.innerHeight,
+            document.documentElement ? document.documentElement.scrollHeight : 0,
+            card ? card.scrollHeight : 0
+        ) - 1;
+
+        canvas.style.height = ctx.canvas.height + 'px';
+        wrapper.style.width = ctx.canvas.width + 'px';
+        update_pen_settings()
+    }
+
+    window.setTimeout(resize, 0)
+    window.addEventListener('resize', resize);
+    document.body.addEventListener('load', resize)
+
+    var isMouseDown = false;
+    var mouseX = 0;
+    var mouseY = 0;
+    var active = true;
+
+    function update_pen_settings() {
+        ctx.lineJoin = ctx.lineCap = 'round';
+        ctx.lineWidth = line_width;
+        ctx.strokeStyle = color;
+        ts_redraw()
+    }
+
+    canvas.addEventListener("mousedown", function (e) {
+        isMouseDown = true;
+        event.preventDefault();
+        arrays_of_points.push(new Array());
+        arrays_of_points[arrays_of_points.length - 1].push({x: e.offsetX, y: e.offsetY});
+        update_pen_settings()
+        ts_undo_button.className = "active"
+    });
+
+    function ts_undo() {
+        arrays_of_points.pop()
+        if (!arrays_of_points.length) {
+            ts_undo_button.className = ""
+        }
+        ts_redraw()
+    }
+
+    window.addEventListener("mouseup", function (e) {
+        isMouseDown = false;
+    });
+
+
+    function ts_redraw() {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        for (var path = 0; path < arrays_of_points.length; path++) {
+            var p1 = arrays_of_points[path][0];
+            var p2 = arrays_of_points[path][1];
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            for (var i = 1, len = arrays_of_points[path].length; i < len; i++) {
+                var midPoint = midPointBtw(p1, p2);
+                ctx.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
+                p1 = arrays_of_points[path][i];
+                p2 = arrays_of_points[path][i + 1];
+            }
+            ctx.lineTo(p1.x, p1.y);
+            ctx.stroke();
+        }
+
+    }
+
+    canvas.addEventListener("mousemove", function (e) {
+        if (isMouseDown && active) {
+            arrays_of_points[arrays_of_points.length - 1].push({x: e.offsetX, y: e.offsetY});
+            ts_redraw()
+        }
+    });
+
+    document.addEventListener('keyup', function (e) {
+        // Z or z
+        if ((e.code === 90 || e.code === 122) && e.ctrlKey) {
+            ts_undo()
+        } else if (e.code === 86 && e.ctrlKey) {
+            switch_visibility()
+        }
+    })
+
+</script>

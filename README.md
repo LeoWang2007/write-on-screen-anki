@@ -1,5 +1,5 @@
 # Write On Screen - Anki plugin
-**A hand write plugin for Anki**
+**A hand write plugin for Anki** base on https://ankiweb.net/shared/info/1631622775
 
 
 
@@ -11,7 +11,9 @@ Plug-in address: https://ankiweb.net/shared/info/567651868
 
 
 
-## Change Log & Requested features
+## Change Log
+
+## Requested features
 
 - [ ] Add color options in the toolbar. See **Anki website**
 - [ ] Use keyboard to control the pen. See https://github.com/LeoWang2007/write-on-screen-anki/issues/5
@@ -28,6 +30,8 @@ Plug-in address: https://ankiweb.net/shared/info/567651868
 
 <p style="color:gray ">因GitHub是国际平台，故将受众更广的英文版本文档前置。</p>
 
+基于https://ankiweb.net/shared/info/1631622775的Anki卡牌手写插件
+
 
 > 我是一名学生，很抱歉我不能及时的回复GitHub中的问题。我会在假期中修复插件的问题。
 
@@ -37,7 +41,9 @@ Plug-in address: https://ankiweb.net/shared/info/567651868
 
 
 
-## 更新日志&已收集的建议
+## 更新日志
+
+## 已收集的建议
 
 - [ ] 增加颜色选择工具栏
 - [ ] 使用实体键盘控制绘画设置。详见 https://github.com/LeoWang2007/write-on-screen-anki/issues/5
